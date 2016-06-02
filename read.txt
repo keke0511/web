@@ -1,6 +1,7 @@
-�����ļ�
+²âÊÔÎÄ¼þ
 
-
+这是乱码吗？
+等会需要pull 一下看看
 
 
 git config --global user.name "yishuixiaofeng"
