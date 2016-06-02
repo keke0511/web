@@ -1,1 +1,8 @@
 ╡Бйтнд╪Ч
+
+
+
+
+git config --global user.name "yishuixiaofeng"
+git config --global user.email "anshalaoda@126.com"
+git config --global push.default simple
