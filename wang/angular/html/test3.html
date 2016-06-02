@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html >
+<head lang="en">
+    <meta charset="UTF-8">
+
+    <script src="../js/jquery-1.12.1.min.js"></script>
+    <script>
+        $(function(){
+            var a = [];
+            $("#aa").click(function() {
+
+
+
+                $.ajax({
+                    type: "GET",
+                    url: "http://123.206.90.124/keke/good/getGoodList.do",
+
+                    success: function (req) {
+
+                        a = req.data;
+                        console.log("22222222222222"+a);
+                    }
+                });
+
+                var s =   $.ajax({
+                    type: "GET",
+                    url: "http://123.206.90.124/keke/good/getGoodList.do",
+
+                    success: function (req) {
+
+                       return  req.data;
+                    }
+                });
+                console.log("3333333333333333"+s);
+            });
+            console.log("44444444444444"+a);
+        })
+    </script>
+    <title></title>
+</head>
+<body>
+    <
+    <div>
+      <button id="aa">点击</button>
+
+    </div>
+</body>
+</html>

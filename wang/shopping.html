@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        table{border: 1px solid black;}
+        td{padding: 5px 20px;border: 1px solid black;text-align: center}
+        tr td:nth-of-type(4){width: 200px;}
+        tr td:nth-of-type(5),tr td:nth-of-type(6){width: 100px;}
+    </style>
+    <script src="jquery-1.12.1.min.js"></script>
+    <script>
+        $(function(){
+            $("span").click(function(){
+
+                var index = $(this).parent().index();
+                //console.log($(this).text());
+                //console.log(index);
+                var a = [];
+               $.ajax({
+                            type:"GET",
+                            url:"http://123.206.90.124/keke/good/getGoodList.do",
+//                            data:{
+//                            },
+                            success: a = function(req){
+
+                                $("table").append("<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>");
+                                $("tr:last td:first-child").html(req.data[index].id);
+                                $("tr:last td:nth-of-type(2)").html(req.data[index].name);
+                                $("tr:last td:nth-of-type(3)").html(req.data[index].stock);
+                                $("tr:last td:nth-of-type(4)").html("<input type='number' value='1'/>");
+                                $("tr:last td:nth-of-type(5)").html(req.data[index].price);
+                                $("tr:last td:nth-of-type(6)").html(req.data[index].price);
+                                $("tr:last td:last").html("<input type='button' value='取消订单'/>");
+                                $("[type='number']").change(function(){
+                                    var Pindex = $(this).parents("tr").index();
+                                    //console.log(Pindex);
+                                    var danjia = $("tr:eq("+Pindex+") td:nth-of-type(5)").text();
+                                    var value = $(this).val();
+                                    //console.log(value);
+                                    $("tr:eq("+Pindex+") td:nth-of-type(6)").html(value*danjia);
+                                    aa();
+                                });
+                                $("td:last input").click(function(){
+                                    var Pindex = $(this).parents("tr").index();
+                                    //console.log(Pindex);
+                                    $("tr:eq("+Pindex+")").remove();
+                                    aa();
+                                });
+                                aa();
+                               return  req.data;
+                            }
+
+                });
+                console.log(a);
+//                a.forEach(function(e){
+//                    console.log(e);
+//                });
+
+            });
+            function aa(){
+                var trArr = $("tr");
+                var Aprice = 0;
+                var Acount = 0;
+                console.log(trArr.length);
+                for(var i = 1;i<trArr.length;i++){
+                    for(var j = 1;j<=i;j++){
+                        var Price =  $("tr:eq("+j+") td:nth-of-type(6)").text();
+                    }
+                    Aprice = parseFloat(Price) + Aprice;
+                }
+                //console.log(Acount.toFixed(2));
+                $("p:last span").text(Aprice.toFixed(2));//保存两位小数；
+                for(var m = 1;m<trArr.length;m++){
+                    for(var n = 1;n<=m;n++){
+                        var count =  $("tr:eq("+n+") td:nth-of-type(4) input").val();
+                    }
+                    Acount = parseInt(count) + Acount;
+                }
+                $("p:first span").text(Acount);
+            }
+        })
+    </script>
+</head>
+<body>
+    <h3>产品</h3>
+    <ol>
+        <li>苹果6S&nbsp;<span>订购</span></li>
+        <li>oppR9&nbsp;<span>订购</span></li>
+        <li>xiaomi&nbsp;<span>订购</span></li>
+    </ol>
+    <table cellpadding="0" cellspacing="0" class="table1">
+        <tr>
+            <td>产品编号</td>
+            <td>物品名称</td>
+            <td>库存</td>
+            <td>订购数量</td>
+            <td>单价</td>
+            <td>总额</td>
+            <td>删除</td>
+        </tr>
+    </table>
+    <p>总量为：<span></span></p>
+    <p>总价为：<span></span></p>
+
+</body>
+</html>

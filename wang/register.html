@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div{width: 500px;height: 500px;border: 1px solid #aaa;margin: 0 auto;}
+    </style>
+    <script src="jquery-1.12.1.min.js"></script>
+    <script>
+        $(function(){
+            $("input:first").blur(function(){
+                var cc = $(this).val();
+                console.log(cc);
+                $.get("http://123.206.90.124/keke/user/validateName.do",{"name":$("input").val()},function(req){
+                    if(cc==""){
+                        $(".span1").text("不能为空");
+                    }
+                    else if(req.success==false){
+                        $(".span1").html(req.errorMsg);
+                    }else{
+                        $(".span1").html("<font color='blue'>此用户可用</font>");
+                    }
+                })
+            });
+
+            $("input:nth-of-type(3)").blur(function(){
+                var pw = $("input:nth-of-type(2)").val();
+                var repw = $("input:nth-of-type(3)").val();
+                console.log(pw);
+                console.log(repw);
+                if(pw!=repw){
+                    $(".span2").text("密码输入不一致");
+                }
+                else{
+                    $(".span2").text("密码输入正确");
+                }
+            });
+            $()
+        })
+    </script>
+</head>
+<body>
+    <div>
+        <p>注册页面</p>
+        用户名：<input type="text" name="name"/><span class="span1"></span><br/>
+        密码：<input type="password"/><br/>
+        重新输入密码：<input type="password"/><span class="span2"></span><br/>
+        <input type="button" value="注册"/>
+    </div>
+
+</body>
+</html>

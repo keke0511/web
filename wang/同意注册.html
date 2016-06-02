@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html ng-app="Md1">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div{width: 500px;height: 300px;text-align: center;line-height: 50px;margin: 0 auto;border: 1px solid red;}
+        select{width: 100px;}
+        td{border: 1px solid black;width: 80px;height: 15px;}
+    </style>
+    <script src="angular/js/jquery-1.12.1.min.js"></script>
+    <script src="angular/js/angular.js"></script>
+    <script>
+        angular.module("Md1",[]).controller("Mc1",function($scope){
+
+        }).controller("Mc2",function($scope){
+            $scope.nn = "angular/img/2.png";
+        }).controller("Mc3",function($scope){
+
+        })
+
+    </script>
+</head>
+<body>
+<div ng-controller="Mc1">
+    <input type="checkbox" ng-model="agree"/>是否同意本条款<br/>
+    <input type="button" value="注册" style="width: 100px;height: 30px;" ng-disabled="!agree"/>
+</div>
+<div ng-controller="Mc2">
+    <p>请选择你喜欢的头像：</p>
+    <select ng-model="nn">
+        <option value="angular/img/1.png">春</option>
+        <option value="angular/img/2.png">夏</option>
+        <option value="angular/img/3.png">秋</option>
+        <option value="angular/img/4.png">冬</option>
+    </select>
+    <img ng-src="{{nn}}"/>
+</div>
+<div ng-controller="Mc3">
+    <table cellspacing="0" cellpadding="0" style="border: 1px solid black;">
+        <tr>
+            <td>选择</td>
+            <td>姓名</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" ng-checked="all"/></td>
+            <td>张三</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" ng-checked="all"/></td>
+            <td>李四</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" ng-checked="all"/></td>
+            <td>王五</td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <input type="checkbox" ng-model="all"/><span ng-show="!all">全选</span><span ng-show="all">取消全选</span>
+            </td>
+        </tr>
+    </table>
+</div>
+
+</body>
+</html>

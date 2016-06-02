@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="jquery-1.12.1.min.js"></script>
+    <script>
+        $(function(){
+            $("input").blur(function(){
+                $.get("http://123.206.90.124/keke/user/regist.do",{"name":$("input").val()},function(req){
+                    if(req.success){
+                        $("span").html("<font color='blue'>此用户可用</font>");
+                    }
+                    else{
+                        $("span").html("<font color='red'>"+req.errorMsg+"</font>");
+                    }
+//                    console.log(req);
+//                    console.log(req.success);
+//                    console.log(req.errorMsg);
+                    /*if(req=="1"){
+                        $("span").html("<font color='red'>此用户已经存在</font>");
+                    }else{
+
+                    }*/
+                })
+            })
+        })
+    </script>
+</head>
+<body>
+    <form action="" method="post">
+        <input type="text" name="name"><span></span>
+        <br/>
+        <input type="submit">
+</form>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html ng-app="he">
+<head lang="en">
+    <meta charset="UTF-8">
+    <script src="../js/angular.js"></script>
+    <title></title>
+    <script>
+        var he = angular.module("he",[]);
+        he.controller("heCntl",function($scope){
+//            $scope.n1 = 30;
+//            $scope.n2 = 20;
+//            var m = parseInt( $scope.n1);
+//            var n = parseInt( $scope.n2);
+//            $scope.sum = 100;
+            $scope.qiuhe = function (a,b){
+                var m = parseInt(a);
+                var n = parseInt(b);
+                console.log(m+n);
+                $scope.sum =  m+n;
+            }
+
+
+        });
+    </script>
+</head>
+<body>
+    <div ng-controller="heCntl">
+        <input ng-model="n1" > + <br/>
+        <input ng-model="n2" > <button ng-click="qiuhe(n1,n2)">求和</button>
+        <br/>
+        <span>{{sum}} </span>
+    </div>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html ng-app="Book">
+<head lang="en">
+    <meta charset="UTF-8">
+    <script src="../js/angular.js"></script>
+    <script src="../js/jquery-1.12.1.min.js"></script>
+    <script src="../js/test2.js"></script>
+    <title></title>
+</head>
+<body>
+    <div ng-controller="BookListCntl">
+        {{goods}}  {{books}}
+        <ul ng-repeat="good in goods">
+            <li> {{$index+1}} {{ good.name }}    {{ good.price }}  </li>
+        </ul>
+        <ul ng-repeat="book in books">
+            <li> {{$index+1}} {{ book.name }}    {{ book.price }}  </li>
+        </ul>
+        <button ng-click="addList()">加载更多</button>
+
+    </div>
+    <div ng-controller="personCntl">
+        姓名：{{person.name}} <br/>
+        性别：{{person.sex}} <br/>
+        年龄：{{person.age}} <br/>
+
+    </div>
+</body>
+</html>

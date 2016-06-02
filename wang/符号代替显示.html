@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <script src="jquery/jquery-1.12.1.min.js"></script>
+    <script>
+        function zz(){
+            var num = $("input").val();
+            var rep = num.slice(6,14);
+            var newnum = num.replace(/rep/,"********");
+            //console.log("num:"+num);
+            //console.log("rep:"+rep);
+            //console.log("newnum:"+newnum);
+            $("span").text(newnum);
+        }
+
+    </script>
+</head>
+<body>
+    <p>
+        请输入身份证号：<input type="text"/>
+    </p>
+    <button class="btn btn-success" onclick="zz()">转换</button>
+    <p>
+        转换结果：<span></span>
+    </p>
+</body>
+</html>

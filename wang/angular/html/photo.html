@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html ng-app="photo">
+<head lang="en">
+    <meta charset="UTF-8">
+    <script src="../js/angular.js"></script>
+    <title></title>
+
+    <script>
+        var photo = angular.module("photo",[]);
+        photo.controller("photoCntl", function ($scope) {
+            $scope.slt = "../img/2.png";
+            $scope.names = ["坏蛋","帅哥","美女","美女2","大叔"];
+            $scope.photos = ["../img/1.png","../img/2.png","../img/3.png","../img/4.png","../img/5.png"];
+            $scope.changePhoto = function(){
+                console.log($scope.slt);
+//                return $scope.photo = $scope.phones[k];
+            }
+        });
+
+
+    </script>
+</head>
+<body>
+<div ng-controller="photoCntl">
+
+   <select  ng-options="photo  for photo in photos" ng-model="slt" ng-click="changePhoto()">
+
+    </select>
+    <img ng-src="{{slt}}">
+</div>
+
+</body>
+</html>

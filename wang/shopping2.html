@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        table{border: 1px solid black;}
+        td{padding: 5px 20px;border: 1px solid black;}
+    </style>
+    <script src="jquery-1.12.1.min.js"></script>
+    <script>
+        $(function(){
+            $.get("http://123.206.90.124/keke/good/getGoodAll.do",function(req){
+                if(req.success) {
+//                    for(var i = 0 ;i < req.data.length;i++){
+//                        (function(i){
+//                            var good = req.data[i];
+//                            var tr=$("<tr/>").appendTo("#table");
+//                            for(var key in good){
+//                                var value=good[key];
+//                                $("<td/>",{
+//                                    text:value
+//                                }).appendTo(tr);
+//                            };
+//                            $("<button/>",{
+//                                text:"按钮",
+//                                click:function(){
+//                                    console.log(good.id);
+//                                }
+//                            }).appendTo(tr);
+//                        }(i))
+//                    }
+
+//                    for (var i = 0; i < req.data.length; i++) {
+//                         var good = req.data[i];
+//                            var tr = $("<tr/>").appendTo("#table");
+//                            var td = $("<td>" + good.id + "</td>").appendTo(tr);
+//                            var td = $("<td>" + good.name + "</td>").appendTo(tr);
+//                            var td = $("<td>" + good.stock + "</td>").appendTo(tr);
+//                            var td = $("<td>" + good.price + "</td>").appendTo(tr);
+//                            var td = $("<td>" + good.description + "</td>").appendTo(tr);
+//                            var button = $("<button ", {
+//                                text: "订购",
+////                            click:function(){
+////                                console.log(good.id); //这样每次都是6.
+////                            }
+//
+////                            click:dinggou(good,i) //这样生成之后直接全部打印。没有点击事件了。
+//                                click: function () {
+//                                    console.log(good.id); //这样每次都是6.
+//                                }
+//                            }).appendTo(tr);
+////                        $("#table").append("<tr><td>"+good.id+"</td><td>"+good.name+"</td><td>"+good.stock+"</td><td>"+good.price+"</td><td>"+good.description+"</td><td>")
+////                                .append("<button >订购</button></td></tr>");
+//                        }
+
+
+
+                    for (var i = 0; i < req.data.length; i++) {
+                        (function (i) {  //这是后来又添加的，解决每次都是6的问题。
+                            var good = req.data[i];
+                            var tr = $("<tr/>").appendTo("#table");
+                            var td = $("<td>" + good.id + "</td>").appendTo(tr);
+                            var td = $("<td>" + good.name + "</td>").appendTo(tr);
+                            var td = $("<td>" + good.stock + "</td>").appendTo(tr);
+                            var td = $("<td>" + good.price + "</td>").appendTo(tr);
+                            var td = $("<td>" + good.description + "</td>").appendTo(tr);
+                            var button = $("<button/>", {
+                                text: "订购",
+//                            click:function(){
+//                                console.log(good.id); //这样每次都是6.
+//                            }
+
+//                            click:dinggou(good,i) //这样生成之后直接全部打印。没有点击事件了。
+                                click: function () {
+                                    console.log(good.id); //这样每次都是6.
+                                }
+                            }).appendTo(tr);
+//                        $("#table").append("<tr><td>"+good.id+"</td><td>"+good.name+"</td><td>"+good.stock+"</td><td>"+good.price+"</td><td>"+good.description+"</td><td>")
+//                                .append("<button >订购</button></td></tr>");
+                        }(i)) //函数自调用，之前讨论过的。
+                    }
+                }
+            });
+
+//            function dinggou(good,i){
+//                console.log(good.id+"   "+i);
+//            }
+        })
+    </script>
+</head>
+<body>
+    <h3>产品</h3>
+    <ol>
+
+    </ol>
+    <table id="table" cellpadding="0" cellspacing="0">
+        <tr>
+            <td>产品编号</td>
+            <td>物品名称</td>
+            <td>库存</td>
+            <td>单价</td>
+            <td>描述</td>
+            <td>操作</td>
+        </tr>
+    </table>
+
+</body>
+</html>
